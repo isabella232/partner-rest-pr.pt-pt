@@ -1,0 +1,37 @@
+### YamlMime:Landing
+title: API REST de Parceiro da Microsoft
+summary: A API REST de Parceiro da Microsoft é a sucessora da API do Centro de Parceiros da Microsoft. Esta API permite aceder programaticamente às capacidades do Centro de Parceiros.
+metadata:
+  title: Documentação de programadores do Centro de Parceiros
+  description: A API REST de Parceiro da Microsoft é a sucessora da API do Centro de Parceiros da Microsoft. Esta API permite aceder programaticamente às capacidades do Centro de Parceiros.
+  ms.service: partner-dashboard
+  ms.subservice: partnercenter-sdk
+  ms.topic: landing-page
+  author: jasonwhowell
+  ms.author: jasonh
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 163c778485f25318e1263a2064ded44fe617f8af
+  ms.sourcegitcommit: 3c165938f544ff226cbe11ca21ed5aa00448d9b4
+  ms.translationtype: MT
+  ms.contentlocale: pt-PT
+  ms.lasthandoff: 04/23/2020
+  ms.locfileid: "97766504"
+landingContent:
+- title: Microsoft Partner API documentation and resources (Documentação e recursos da API do Microsoft Partner)
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Introdução à API REST de Parceiro
+      url: develop/get-started.md
+    - text: Cenários suportados pela API REST de Parceiro
+      url: develop/scenarios.md
+  - linkListType: reference
+    links:
+    - text: API REST de Parceiro
+      url: develop/rest-api-reference.md
+  - linkListType: how-to-guide
+    links:
+    - text: Programmatically manage referrals (Gerir programaticamente referências)
+      url: develop/referrals.md
+    - text: Obter programaticamente os preços do CSP
+      url: develop/pricing.md

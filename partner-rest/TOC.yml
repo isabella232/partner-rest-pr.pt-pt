@@ -1,0 +1,45 @@
+- name: Documentação para programadores de parceiros
+  href: index.yml
+  items:
+    - name: Descrições gerais e cenários
+      href: develop/index.md
+      items:
+        - name: Introdução
+          href: develop/get-started.md
+          items:
+            - name: Autenticação da API de Parceiro
+              href: develop/api-authentication.md
+        - name: Cenários
+          href: develop/scenarios.md
+          items:
+            - name: Referências
+              href: develop/referrals.md
+              items:
+                - name: Obter a lista de oportunidades potenciais e oportunidades
+                  href: develop/get-a-list-of-referrals.md
+                - name: Obter uma oportunidade potencial ou oportunidade por ID
+                  href: develop/get-a-referral-by-id.md
+                - name: Atualizar uma oportunidade potencial ou oportunidade
+                  href: develop/patch-a-referral.md
+                - name: Criar uma nova oportunidade
+                  href: develop/create-a-referral.md
+                - name: Recursos de referência
+                  href: develop/referral-resources.md
+            - name: Preços
+              href: develop/pricing.md
+              items:
+                - name: Obter uma folha de preços
+                  href: develop/get-a-price-sheet.md
+                - name: Obter taxas de câmbio estrangeiras
+                  href: develop/get-foreign-exchange-rates.md
+    - name: Referência da API REST
+      href: develop/rest-api-reference.md
+      items:
+        - name: URLs de ponto final REST
+          href: develop/rest-urls.md
+        - name: Cabeçalhos REST
+          href: develop/headers.md
+        - name: Códigos de erro REST
+          href: develop/error-codes.md
+        - name: Recursos REST
+          href: develop/rest-resources.md
