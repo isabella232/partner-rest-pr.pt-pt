@@ -5,12 +5,12 @@ ms.date: 01/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.localizationpriority: medium
-ms.openlocfilehash: 5195ebed6559bd71a7832a667e63ee801be1c82f
-ms.sourcegitcommit: bb3f5f7ee0489bded86fe52e55018c1f4f5032e2
+ms.openlocfilehash: 7571e8fce861dbfe463000a1ac4094115af08ffa
+ms.sourcegitcommit: 9e64d6358ef4e1ac2d3e0d36cd63490a5f760b38
 ms.translationtype: MT
 ms.contentlocale: pt-PT
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "97770517"
+ms.lasthandoff: 07/01/2021
+ms.locfileid: "113125521"
 ---
 # <a name="get-a-price-sheet"></a>Obter uma folha de preços
 
@@ -22,7 +22,7 @@ Este tópico explica como obter uma folha de preços para um determinado mercado
 
 ## <a name="prerequisites"></a>Pré-requisitos
 
-- Credenciais descritas na [autenticação da API do parceiro.](api-authentication.md) Este cenário apenas suporta a autenticação do utilizador da aplicação. A aplicação ainda não está suportada.
+- Credenciais descritas na [autenticação da API do parceiro.](api-authentication.md) Este cenário apenas suporta a autenticação do utilizador da aplicação. Só a candidatura ainda não está apoiada. Os parceiros que **experimentem o erro http:400** devem consultar a [documentação de autenticação da API do Parceiro.](api-authentication.md)
 - Atualmente, esta API suporta apenas o acesso do utilizador quando os parceiros devem estar numa das seguintes funções: Global Admin, Admin Agent ou Sales Agent.
 
 ## <a name="details"></a>Detalhes
@@ -50,8 +50,11 @@ Utilize os seguintes parâmetros de percurso para solicitar qual o mercado e o t
 
 | Nome                   | Tipo     | Necessário | Descrição                                                     |
 |------------------------|----------|----------|-----------------------------------------------------------------|
-|Mercado                      | string   | Sim       | Código de país de duas letras para o mercado a ser solicitado       |
-|Folha de preçosVereja | string   | Sim       | O tipo de folha de preços solicitada, isto pode ser azure_consumption ou azure_reservations       |
+|Mercado                      | string   | Yes       | Código de país de duas letras para o mercado a ser solicitado       |
+|Folha de preçosVereja | string   | Yes       | O tipo de folha de preços solicitada, pode ser azure_consumption, azure_reservations ou atualizado.  |
+
+> [!Note]
+> Atualizaçãobensebased PriceSheetView está atualmente disponível apenas para parceiros que fazem parte da nova pré-visualização técnica da experiência de comércio M365/D365.
 
 ### <a name="uri-filter-parameters"></a>Parâmetros de filtro URI
 
@@ -81,6 +84,18 @@ Accept-Encoding: deflate
 Host: api.partner.microsoft.com
 
 ```
+### <a name="request-example-for-new-commerce"></a>Exemplo de pedido para novo comércio
+
+> [!Note]
+> Atualizaçãobensebased PriceSheetView está atualmente disponível apenas para parceiros que fazem parte da nova pré-visualização técnica da experiência de comércio M365/D365.
+
+```http
+GET https://api.partner.microsoft.com/v1.0/sales/pricesheets(Market='US',PricesheetView='updatedlicensebased')/$value?timeline=history&month=202101 HTTP/1.1
+Authorization: Bearer
+Accept-Encoding: deflate
+Host: api.partner.microsoft.com
+
+```
 
 ## <a name="rest-response"></a>Resposta do REST
 
@@ -103,6 +118,26 @@ Date: Wed, 02 Oct 2019 03:41:20 GMT
 
 "ProductTitle","ProductId","SkuId","SkuTitle","Publisher","SkuDescription","UnitOfMeasure","TermDuration","Market","Currency","UnitPrice","PricingTierRangeMin","PricingTierRangeMax","EffectiveStartDate","EffectiveEndDate","MeterIds","MeterType","Tags“
 "Advanced Data Security - SQL Database","DZH318Z0C16V","001J","Advanced Data Security - SQL Database - Standard - US East 2","Microsoft","Advanced Data Security - SQL Database - Standard - US East 2","1 Node/Month","payG-1","US","USD","15","","","3/1/2018 12:00:00 AM","11/30/9999 11:59:59 PM","cb0969aa-aaaa-4d6c-ab4b-7e182fa06aff","1 Node/Month","Azure“
+======= Truncated ==============
+
+```
+
+### <a name="response-example-for-new-commerce"></a>Exemplo de resposta para novo comércio
+
+> [!Note]
+> Atualizaçãobensebased PriceSheetView está atualmente disponível apenas para parceiros que fazem parte da nova pré-visualização técnica da experiência de comércio M365/D365.
+
+``` http
+HTTP/1.1 200 OK
+Cache-Control: private
+Content-Length: 42180180
+Content-Type: application/octet-stream
+Content-Disposition: attachment; filename=sheets.csv
+Request-ID: 9f8bed52-e4df-4d0c-9ca6-929a187b0731
+Date: Wed, 02 Feb 2021 03:41:20 GMT
+
+"ProductTitle","ProductId","SkuId","SkuTitle","Publisher","SkuDescription","UnitOfMeasure","TermDuration","BillingPlan","Market","Currency","UnitPrice","PricingTierRangeMin","PricingTierRangeMax","EffectiveStartDate","EffectiveEndDate","Tags","ERP Price“
+"Advanced Communications","CFQ7TTC0HDK0","0001","Advanced Communications","Microsoft Corporation","Advanced meetings, calling, workflow integration, and management tools for IT.","","P1Y","Annual","US","USD","115.2","","","2/1/2019 12:00:00 AM","2/4/2021 8:35:31 PM","License","144"
 ======= Truncated ==============
 
 ```

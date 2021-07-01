@@ -30,6 +30,8 @@
               items:
                 - name: Obter uma folha de preços
                   href: develop/get-a-price-sheet.md
+                - name: Obtenha uma matriz de oferta
+                  href: develop/get-an-offer-matrix.md
                 - name: Obter taxas de câmbio estrangeiras
                   href: develop/get-foreign-exchange-rates.md
     - name: Referência da API REST
