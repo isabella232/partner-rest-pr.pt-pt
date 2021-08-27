@@ -5,12 +5,12 @@ ms.date: 01/24/2020
 ms.service: partner-dashboard
 ms.subservice: partnercenter-sdk
 ms.localizationpriority: medium
-ms.openlocfilehash: 7571e8fce861dbfe463000a1ac4094115af08ffa
-ms.sourcegitcommit: 9e64d6358ef4e1ac2d3e0d36cd63490a5f760b38
+ms.openlocfilehash: 0185a61ef0a3747aee1b06f88a7a8d6f1279f9e3
+ms.sourcegitcommit: 1a183f9b37d646be240a48fc60e5902f409e8ac1
 ms.translationtype: MT
 ms.contentlocale: pt-PT
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113125521"
+ms.lasthandoff: 08/26/2021
+ms.locfileid: "122989703"
 ---
 # <a name="get-a-price-sheet"></a>Obter uma folha de preços
 
@@ -30,10 +30,10 @@ Este tópico explica como obter uma folha de preços para um determinado mercado
 - Os dados de retornos atuais apenas para o plano Azure de consumo e produtos de reserva.
 - O [preço](pricing.md) atual inclui todos os contadores e produtos disponíveis durante o mês em curso até à data em que a API é chamada. Os meses anteriores incluem todos os contadores e produtos disponíveis para o mês em questão.
 - Os preços dos contadores de consumo estão apenas em USD, os parceiros devem usar as taxas de câmbio API para calcular os custos da moeda local.
-- Os preços dos contadores de consumo são estimados nos preços de venda a retalho. Os descontos para parceiros estão disponíveis através do [crédito adquirido pelo parceiro.](https://docs.microsoft.com/partner-center/partner-earned-credit-explanation)
+- Os preços dos contadores de consumo são estimados nos preços de venda a retalho. Os descontos para parceiros estão disponíveis através do [crédito adquirido pelo parceiro.](/partner-center/partner-earned-credit-explanation)
 - Os preços dos contadores de reservas incluem os descontos para parceiros da CSP. Os preços estimados de venda a retalho para reservas podem ser encontrados nas reservas de serviços partilhados que são descarregados a partir da página "Preços e ofertas" do Partner Center.
-- Mais informações sobre os preços do plano Azure podem ser encontradas na documentação de preços do [plano Azure.](https://docs.microsoft.com/partner-center/azure-plan-price-list)
-- Os preços dos parceiros e as APIs cambiais não fazem parte do [Partner Center SDK](https://docs.microsoft.com/partner-center/develop/get-started).
+- Mais informações sobre os preços do plano Azure podem ser encontradas na documentação de preços do [plano Azure.](/partner-center/azure-plan-price-list)
+- Os preços dos parceiros e as APIs cambiais não fazem parte do [Partner Center SDK](get-started.md).
 - Este método devolve a lista de preços como um fluxo de ficheiros. O fluxo de ficheiros é um ficheiro .csv ou uma versão comprimida zip do .csv. Os detalhes sobre como solicitar ficheiros comprimidos estão incluídos abaixo.
 
 ## <a name="rest-request"></a>Pedido de DESCANSO
@@ -42,7 +42,7 @@ Este tópico explica como obter uma folha de preços para um determinado mercado
 
 | Método   | URI do pedido                                                                                                 |
 |----------|-------------------------------------------------------------------------------------------------------------|
-| **Obter** | https://api.partner.microsoft.com/v1.0/sales/pricesheets(Market='{market}',PricesheetView='{view}')/$value                                     |
+| **GET** | https://api.partner.microsoft.com/v1.0/sales/pricesheets(Market='{market}',PricesheetView='{view}')/$value                                     |
 
 ### <a name="uri-required-parameters"></a>URI exigia parâmetros
 
@@ -80,7 +80,6 @@ Além dos cabeçalhos acima, os ficheiros de preços podem ser recuperados como 
 ```http
 GET https://api.partner.microsoft.com/v1.0/sales/pricesheets(Market='ad',PricesheetView='azure_consumption')/$value?timeline=history&month=201909 HTTP/1.1
 Authorization: Bearer
-Accept-Encoding: deflate
 Host: api.partner.microsoft.com
 
 ```
@@ -101,27 +100,6 @@ Host: api.partner.microsoft.com
 
 Se for bem sucedido, este método devolve a lista de preços como um fluxo de ficheiros. O fluxo de ficheiros é um ficheiro .csv ou uma versão comprimida zip do .csv.
 
-### <a name="response-success-and-error-codes"></a>Códigos de sucesso e erro de resposta
-
-Cada resposta vem com um código de estado HTTP que indica sucesso ou falha e informações adicionais de depuragem. Utilize uma ferramenta de rastreio de rede para ler este código, tipo de erro e parâmetros adicionais. Para obter a lista completa, consulte [códigos de erro](error-codes.md).
-
-### <a name="response-example"></a>Exemplo de resposta
-
-``` http
-HTTP/1.1 200 OK
-Cache-Control: private
-Content-Length: 42180180
-Content-Type: application/octet-stream
-Content-Disposition: attachment; filename=pricesheet
-Request-ID: 9f8bed52-e4df-4d0c-9ca6-929a187b0731
-Date: Wed, 02 Oct 2019 03:41:20 GMT
-
-"ProductTitle","ProductId","SkuId","SkuTitle","Publisher","SkuDescription","UnitOfMeasure","TermDuration","Market","Currency","UnitPrice","PricingTierRangeMin","PricingTierRangeMax","EffectiveStartDate","EffectiveEndDate","MeterIds","MeterType","Tags“
-"Advanced Data Security - SQL Database","DZH318Z0C16V","001J","Advanced Data Security - SQL Database - Standard - US East 2","Microsoft","Advanced Data Security - SQL Database - Standard - US East 2","1 Node/Month","payG-1","US","USD","15","","","3/1/2018 12:00:00 AM","11/30/9999 11:59:59 PM","cb0969aa-aaaa-4d6c-ab4b-7e182fa06aff","1 Node/Month","Azure“
-======= Truncated ==============
-
-```
-
 ### <a name="response-example-for-new-commerce"></a>Exemplo de resposta para novo comércio
 
 > [!Note]
@@ -141,3 +119,7 @@ Date: Wed, 02 Feb 2021 03:41:20 GMT
 ======= Truncated ==============
 
 ```
+
+### <a name="response-success-and-error-codes"></a>Códigos de sucesso e erro de resposta
+
+Cada resposta vem com um código de estado HTTP que indica sucesso ou falha e informações adicionais de depuragem. Utilize uma ferramenta de rastreio de rede para ler este código, tipo de erro e parâmetros adicionais. Para obter a lista completa, consulte [códigos de erro](error-codes.md).
